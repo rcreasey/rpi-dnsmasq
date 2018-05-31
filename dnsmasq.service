@@ -7,7 +7,7 @@ After=docker.service
 Restart=always
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
-ExecStart=/usr/bin/docker run -p 53:53/udp -p 53:53/tcp -v /opt/dnsmasq/dnsmasq.conf:/etc/dnsmasq.conf --cap-add=NET_ADMIN --name %n rcreasey/rpi-dnsmasq:latest
+ExecStart=/usr/bin/docker run -p 53:53/udp -p 53:53/tcp -v /opt/dnsmasq/dnsmasq.conf:/etc/dnsmasq.conf --cap-add=NET_ADMIN --name %n rcreasey/rpi-dnsmasq:latest --log-facility=-
 ExecStop=/usr/bin/docker stop -t 2 %n
 
 [Install]
